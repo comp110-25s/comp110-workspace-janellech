@@ -1,6 +1,6 @@
 """This program calculates the supplies to host a tea party."""
 
-"""__author__: str = "730714439" """
+__author__: str = "730714439"
 
 
 def main_planner(guests: int) -> None:
@@ -23,7 +23,7 @@ def tea_bags(people: int) -> int:
 
 def treats(people: int) -> int:
     """number of treats needed for guests"""
-    return int(tea_bags(people) * 1.5)
+    return int(tea_bags(people=people) * 1.5)
 
 
 def cost(tea_count: int, treat_count: int) -> float:
