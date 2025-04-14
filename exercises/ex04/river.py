@@ -21,19 +21,31 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self):
-        return None
+        survive_fish = [fish for fish in self.fish if fish.age <= 3]
+        survive_bears = [bear for bear in self.bears if bear.age <= 5]
+
+        self.fish = survive_fish
+        self.bears = survive_bears
 
     def bears_eating(self):
-        return None
+        for bear in self.bears:
+            if len(self.fish) >= 5:
+                self.remove_fish(3)
+                bear.eat(3)
 
     def check_hunger(self):
-        return None
+        surviving_bears = [bear for bear in self.bears if bear.hunger_score >= 0]
+        self.bears = surviving_bears
 
     def repopulate_fish(self):
-        return None
+        num_new_fish = (len(self.fish) // 2) * 4
+        for _ in range(num_new_fish):
+            self.fish.append(Fish())
 
     def repopulate_bears(self):
-        return None
+        num_new_bears = len(self.bears) // 2
+        for _ in range(num_new_bears):
+            self.bears.append(Bear())
 
     def view_river(self):
         return None
@@ -60,3 +72,13 @@ class River:
         self.repopulate_bears()
         # Visualize River
         self.view_river()
+
+    def one_river_week(self):
+        days_in_week = 0
+        while days_in_week < 7:
+            self.one_river_day()
+            days_in_week += 1
+
+    def remove_fish(self, amount: int):
+        for _ in range(min(amount, len(self.fish))):
+            self.fish.pop(0)

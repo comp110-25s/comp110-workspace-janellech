@@ -8,4 +8,4 @@ class Fish:
         self.age = 0
 
     def one_day(self):
-        return None
+        self.age += 1
