@@ -7,14 +7,14 @@ from exercises.EX04.bear import Bear
 
 
 class River:
-    """River ecosystem object"""
+    """This is the river ecosystem object."""
 
     day: int
     bears: list[Bear]
     fish: list[Fish]
 
     def __init__(self, num_fish: int, num_bears: int):
-        """New River with num_fish Fish and num_bears Bears"""
+        """New River with num_fish Fish and num_bears Bears!"""
         self.day: int = 0
         self.fish: list[Fish] = []
         self.bears: list[Bear] = []
@@ -25,7 +25,7 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self):
-        """Check ages of surviving animals and update pop"""
+        """Check ages of surviving animals and update population!"""
         survive_fish: list[Fish] = []
         survive_bears: list[Bear] = []
 
@@ -47,20 +47,21 @@ class River:
                 bear.eat(3)
 
     def check_hunger(self):
-        """Check how hungry a bear is."""
-        hungry_bear: list[Bear] = []
+        """Check how hungry a bear is and remove hungry bears."""
+        alive_bears: list[Bear] = []
         for bear in self.bears:
             if bear.hunger_score >= 0:
-                hungry_bear.append(bear)
+                alive_bears.append(bear)
+        self.bears = alive_bears
 
     def repopulate_fish(self):
-        """Add fish to ecosystem"""
+        """Add fish to the river ecosystem."""
         num_new_fish = (len(self.fish) // 2) * 4
         for _ in range(num_new_fish):
             self.fish.append(Fish())
 
     def repopulate_bears(self):
-        """Add bears to ecosystem"""
+        """Add bears to the river ecosystem!"""
         num_new_bears = len(self.bears) // 2
         for _ in range(num_new_bears):
             self.bears.append(Bear())
@@ -72,7 +73,7 @@ class River:
         print(f"Bear population: {len(self.bears)}")
 
     def one_river_day(self):
-        """Simulate one day of life in the river"""
+        """Simulate one day of life in the river!"""
         # Increase day by 1
         self.day += 1
         # Simulate one day for all Bears
@@ -95,7 +96,7 @@ class River:
         self.view_river()
 
     def one_river_week(self):
-        """simulate one week in the river ecosystem"""
+        """Simulate one week in the river ecosystem!"""
         days_in_week = 0
         while days_in_week < 7:
             self.one_river_day()
